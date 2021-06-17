@@ -5,3 +5,9 @@ services:
         restart: unless-stopped
         ports:
             - 5000:5000
+        volumes:
+            - /var/lib/DevRegistry:/DevRegistry
+        environment:
+            - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/DevRegistry
+            - REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=25
+            - REGISTRY_STORAGE_DELETE_ENABLED=true
