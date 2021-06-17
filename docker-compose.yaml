@@ -1,7 +1,7 @@
 version: "3.2"
 services:
-	DevRegistryService:
-		image: registry:2.7.1
-		restart: unless-stopped
-		ports:
-			- 5000:5000config
+    DevRegistryService:
+        image: registry:2.7.1
+        restart: unless-stopped
+        ports:
+            - 5000:5000
