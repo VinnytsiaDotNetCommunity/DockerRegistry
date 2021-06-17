@@ -7,7 +7,10 @@ services:
             - 5000:5000
         volumes:
             - /var/lib/DevRegistry:/DevRegistry
+            - ./auth:/auth
         environment:
             - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/DevRegistry
             - REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=25
             - REGISTRY_STORAGE_DELETE_ENABLED=true
+            - REGISTRY_AUTH_HTPASSWD_REALM=DevRegistry
+            - REGISTRY_AUTH_HTPASSWD_PATH=/auth/.htpasswd
