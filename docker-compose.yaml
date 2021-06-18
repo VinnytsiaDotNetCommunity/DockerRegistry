@@ -4,13 +4,19 @@ services:
         image: registry:2.7.1
         restart: unless-stopped
         ports:
-            - 5000:5000
+            - 443:443
         volumes:
             - /var/lib/DevRegistry:/DevRegistry
             - ./auth:/auth
+            - ./ssl/registry.dev.crt:/ssl/public.crt
+            - ./ssl/registry.dev.key:/ssl/private.key
         environment:
             - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/DevRegistry
             - REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=25
             - REGISTRY_STORAGE_DELETE_ENABLED=true
             - REGISTRY_AUTH_HTPASSWD_REALM=DevRegistry
             - REGISTRY_AUTH_HTPASSWD_PATH=/auth/.htpasswd
+            - REGISTRY_HTTP_ADDR=0.0.0.0:443
+            - REGISTRY_HTTP_HOST=https://registry.dev
+            - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/public.crt
+            - REGISTRY_HTTP_TLS_KEY=/ssl/private.key

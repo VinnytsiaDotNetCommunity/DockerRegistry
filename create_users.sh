@@ -11,10 +11,8 @@
 
 mkdir auth
 # create new file with user
+echo "Create file with user: 'htpasswd -cbB ./auth/.htpasswd user 12345'"
 htpasswd -cbB ./auth/.htpasswd user 12345
 
-# add user to existed file
-#htpasswd -bB ./auth/.htpasswd user 12345
-
-# delete user
-#htpasswd -DbB ./auth/.htpasswd user 12345
+echo "Add user to existed file: 'htpasswd -bB ./auth/.htpasswd user 12345'"
+echo "Delete user: 'htpasswd -DbB ./auth/.htpasswd user 12345'"
